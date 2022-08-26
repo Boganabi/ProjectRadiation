@@ -10,7 +10,7 @@ UWeaponComponent::UWeaponComponent()
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-    gunBody = CreateDefaultSubobject<USkeletalMesh>(TEXT("Gun"));
+    gunBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Gun"));
 
     
 	// ...
@@ -58,14 +58,14 @@ void UWeaponComponent::Shoot()
     {
         if (bullet)
         {
-            ABulletActor* newBullet = NewObject<ABulletActor>(TEXT("Bullet"));
+            ABulletActor* newBullet = NewObject<ABulletActor>();
             if (newBullet)
             {
                 currentAmmoAmount -= 1.0f;
-                newBullet.transform.position = barrelEnd.GetLocation();
-                newBullet.transform.rotation = barrelEnd.GetRotation();
+                newBullet->SetActorLocation(barrelEnd.GetLocation());
+                newBullet->SetActorRotation(barrelEnd.GetRotation());
                 //Debug.Log(barrelEnd.gameObject.transform.rotation.eulerAngles);
-                newBullet.SetTrajectory(barrelEnd.GetLocation());
+                newBullet->SetTrajectory(barrelEnd.GetLocation());
                 currentPerBulletCooldown = maxPerBulletCooldown;
                 // newBullet.Launch();
             }

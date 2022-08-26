@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
+#include "Bullet/BulletActor.h"
 #include "WeaponComponent.generated.h"
 
 
@@ -30,7 +31,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	ABulletActor bullet;
+	ABulletActor* bullet;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		float ammoCapacity	= 0.0f;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
