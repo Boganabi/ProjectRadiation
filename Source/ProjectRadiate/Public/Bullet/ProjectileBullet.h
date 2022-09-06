@@ -29,6 +29,7 @@ protected:
 	UFUNCTION()
 	virtual void OnBulletCollision(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
+	UStaticMeshComponent* body;
 
 
 public:

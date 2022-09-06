@@ -11,7 +11,6 @@ UWeaponComponent::UWeaponComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
     gunBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Gun"));
-
     
 	// ...
 }
@@ -58,6 +57,7 @@ void UWeaponComponent::Shoot()
     {
         if (bullet)
         {
+            UClass* test = bullet.Get();
             ABulletActor* newBullet = NewObject<ABulletActor>();
             if (newBullet)
             {

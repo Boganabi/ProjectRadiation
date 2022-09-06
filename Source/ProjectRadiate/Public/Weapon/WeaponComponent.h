@@ -31,7 +31,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	ABulletActor* bullet;
+		TSubclassOf<ABulletActor> bullet;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		float ammoCapacity	= 0.0f;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
