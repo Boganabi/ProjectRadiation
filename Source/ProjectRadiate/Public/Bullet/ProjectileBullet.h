@@ -39,6 +39,10 @@ public:
 	virtual void Launch() override;
 	void SetSeed(float speed);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UStaticMesh* mesh;
+
+
 
 	
 };

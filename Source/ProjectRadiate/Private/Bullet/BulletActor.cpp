@@ -8,8 +8,7 @@ ABulletActor::ABulletActor()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("body"));
-	body->SetStaticMesh(mesh);
+
 
 }
 
@@ -17,7 +16,6 @@ ABulletActor::ABulletActor()
 void ABulletActor::BeginPlay()
 {
 	Super::BeginPlay();
-	body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Body"));
 	currentLifetime = initialLifetime;
 }
 

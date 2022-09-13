@@ -30,11 +30,16 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float initialLifetime = 1.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float startDropoffDistance = 0.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float endDropoffDistance = 0.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float startDropoffDamage = 0.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float endDropoffDamage = 0.0f;
 
 	void SetTrajectory(FVector direction);
@@ -44,8 +49,7 @@ public:
 	void SetEndDamage(float damage);
 	virtual void Launch() {};
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-		UStaticMesh* mesh;
+
 
 
 };

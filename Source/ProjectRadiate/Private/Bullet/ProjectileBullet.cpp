@@ -6,6 +6,11 @@
 
 AProjectileBullet::AProjectileBullet()
 {
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	body = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("body"));
+	body->SetStaticMesh(mesh);
+	body->SetVisibility(true);
+	SetRootComponent(body);
 
 }
 
@@ -51,8 +56,12 @@ void AProjectileBullet::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	body->OnComponentHit.AddDynamic(this, &AProjectileBullet::OnBulletCollision);
-	Launch();
+	if (body)
+	{
+		body->OnComponentHit.AddDynamic(this, &AProjectileBullet::OnBulletCollision);
+		Launch();
+	}
+
 }
 
 void AProjectileBullet::OnBulletCollision(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
