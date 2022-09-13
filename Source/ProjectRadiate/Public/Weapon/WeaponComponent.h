@@ -25,6 +25,7 @@ protected:
 	float currentReloadCooldown = 0.0f;
 	bool bIsReloading = false;
 	float currentPerBulletCooldown = 0.0f;
+
 	USkeletalMeshComponent* gunBody;
 
 public:	
@@ -48,8 +49,14 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 		FTransform barrelEnd;
 
-	UFUNCTION()
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+		USkeletalMesh* mesh;
+
+	UFUNCTION(BlueprintCallable)
 	virtual void Shoot();
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	virtual void Reload();
+
+	UFUNCTION()
+	USkeletalMeshComponent* GetMesh();
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Weapon/WeaponComponent.h"
 #include "ProjectRadiateCharacter.generated.h"
 
 class UInputComponent;
@@ -13,6 +14,7 @@ class UCameraComponent;
 class UMotionControllerComponent;
 class UAnimMontage;
 class USoundBase;
+class UWeaponComponent;
 
 UCLASS(config=Game)
 class AProjectRadiateCharacter : public ACharacter
@@ -25,7 +27,7 @@ class AProjectRadiateCharacter : public ACharacter
 
 	/** Gun mesh: 1st person view (seen only by self) */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-	USkeletalMeshComponent* FP_Gun;
+	UWeaponComponent* FP_Gun;
 
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)

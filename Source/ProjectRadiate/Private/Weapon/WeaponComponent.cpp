@@ -11,6 +11,7 @@ UWeaponComponent::UWeaponComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 
     gunBody = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Gun"));
+    gunBody->SetSkeletalMesh(mesh);
     
 	// ...
 }
@@ -57,17 +58,19 @@ void UWeaponComponent::Shoot()
     {
         if (bullet)
         {
-            UClass* test = bullet.Get();
-            ABulletActor* newBullet = NewObject<ABulletActor>();
+            GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, TEXT("ShootPass"));
+            //UClass* test = bullet.Get();
+            ABulletActor* newBullet = NewObject<ABulletActor>(this, bullet->GetFName(), RF_NoFlags, bullet.GetDefaultObject());
             if (newBullet)
             {
+                GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, TEXT("ShootPass2"));
                 currentAmmoAmount -= 1.0f;
-                newBullet->SetActorLocation(barrelEnd.GetLocation());
-                newBullet->SetActorRotation(barrelEnd.GetRotation());
+                //newBullet->SetActorRelativeLocation(barrelEnd.GetLocation());
+               // newBullet->SetActorRelativeRotation(barrelEnd.GetRotation());
                 //Debug.Log(barrelEnd.gameObject.transform.rotation.eulerAngles);
-                newBullet->SetTrajectory(barrelEnd.GetLocation());
+                //newBullet->SetTrajectory(barrelEnd.GetLocation());
                 currentPerBulletCooldown = maxPerBulletCooldown;
-                // newBullet.Launch();
+                newBullet->Launch();
             }
             else
             {
@@ -91,5 +94,10 @@ void UWeaponComponent::Reload()
         currentReloadCooldown = reloadCooldown;
 
     }
+}
+
+USkeletalMeshComponent* UWeaponComponent::GetMesh()
+{
+    return gunBody;
 }
 

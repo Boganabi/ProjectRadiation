@@ -42,10 +42,10 @@ AProjectRadiateCharacter::AProjectRadiateCharacter()
 	Mesh1P->SetRelativeLocation(FVector(-0.5f, -4.4f, -155.7f));
 
 	// Create a gun mesh component
-	FP_Gun = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FP_Gun"));
-	FP_Gun->SetOnlyOwnerSee(false);			// otherwise won't be visible in the multiplayer
-	FP_Gun->bCastDynamicShadow = false;
-	FP_Gun->CastShadow = false;
+	FP_Gun = CreateDefaultSubobject<UWeaponComponent>(TEXT("FP_Gun"));
+	FP_Gun->GetMesh()->SetOnlyOwnerSee(false);			// otherwise won't be visible in the multiplayer
+	FP_Gun->GetMesh()->bCastDynamicShadow = false;
+	FP_Gun->GetMesh()->CastShadow = false;
 	// FP_Gun->SetupAttachment(Mesh1P, TEXT("GripPoint"));
 	FP_Gun->SetupAttachment(RootComponent);
 
@@ -140,6 +140,7 @@ void AProjectRadiateCharacter::SetupPlayerInputComponent(class UInputComponent* 
 
 void AProjectRadiateCharacter::OnFire()
 {
+	/*
 	// try and fire a projectile
 	if (ProjectileClass != nullptr)
 	{
@@ -184,6 +185,9 @@ void AProjectRadiateCharacter::OnFire()
 			AnimInstance->Montage_Play(FireAnimation, 1.f);
 		}
 	}
+	*/
+
+	FP_Gun->Shoot();
 }
 
 void AProjectRadiateCharacter::OnResetVR()

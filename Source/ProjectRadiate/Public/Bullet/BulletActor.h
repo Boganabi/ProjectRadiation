@@ -44,5 +44,8 @@ public:
 	void SetEndDamage(float damage);
 	virtual void Launch() {};
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UStaticMesh* mesh;
+
 
 };
